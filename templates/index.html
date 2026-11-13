@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#171916"><title>VESTRA — Your wardrobe, smarter</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <aside class="sidebar">
+    <a class="brand" href="#home">VESTRA<span>✳</span></a>
+    <p class="side-label">WORKSPACE</p>
+    <nav>
+      <button class="nav-link active" data-view="wardrobe"><span>▦</span> Wardrobe</button>
+      <button class="nav-link" data-view="outfits"><span>◈</span> Outfits</button>
+      <button class="nav-link" data-view="collections"><span>▤</span> Collections</button>
+      <button class="nav-link" data-view="discover"><span>✧</span> Discover</button>
+    </nav>
+    <div class="sidebar-bottom"><div class="avatar">A</div><div><strong>My space</strong><small>Personal wardrobe</small></div><span class="more">···</span></div>
+  </aside>
+  <main class="main">
+    <header class="topbar"><div class="breadcrumb">MY SPACE <span>/</span> <b id="crumb">WARDROBE</b></div><div class="top-actions"><span class="status-dot"></span><span>All changes saved</span><button class="icon-button" aria-label="Notifications">♧</button></div></header>
+    <section class="hero" id="home">
+      <div class="hero-copy"><p class="eyebrow">THE ART OF GETTING DRESSED</p><h1>Your wardrobe,<br><em>reimagined.</em></h1><p class="hero-sub">A little more organised. A lot more you.<br>Everything you own, styled your way.</p><button class="primary-button" id="hero-outfits">Explore outfits <span>↗</span></button></div>
+      <div class="hero-art"><div class="sun"></div><div class="hanger hanger-one">♧</div><div class="hanger hanger-two">♧</div><div class="hanger hanger-three">♧</div><div class="hero-caption">CURATED BY YOU <span>— 001</span></div></div>
+    </section>
+    <section class="stats-row"><div class="stat"><span class="stat-label">TOTAL PIECES</span><strong id="stat-items">05</strong><small>in your wardrobe</small></div><div class="stat"><span class="stat-label">OUTFITS SAVED</span><strong id="stat-outfits">00</strong><small>ready to wear</small></div><div class="stat"><span class="stat-label">CATEGORIES</span><strong id="stat-categories">04</strong><small>and counting</small></div><div class="stat stat-note"><span class="sparkle">✳</span><p>Style is a way to say<br>who you are.</p><small>— Rachel Zoe</small></div></section>
+    <section class="content-section" id="wardrobe-view">
+      <div class="section-heading"><div><p class="eyebrow">A HOME FOR EVERY PIECE</p><h2>Your wardrobe<span class="period">.</span></h2></div><button class="outline-button" id="open-add">＋ Add new item</button></div>
+      <div class="toolbar"><div class="filters" id="filters"><button class="filter active" data-filter="All">All pieces <span id="all-count">05</span></button><button class="filter" data-filter="Tops">Tops</button><button class="filter" data-filter="Bottoms">Bottoms</button><button class="filter" data-filter="Outerwear">Outerwear</button><button class="filter" data-filter="Footwear">Footwear</button><button class="filter" data-filter="Accessories">Accessories</button></div><input id="search" class="search" placeholder="⌕  Search wardrobe" aria-label="Search wardrobe"></div>
+      <div class="item-grid" id="item-grid"></div>
+      <div class="empty-state hidden" id="empty-items"><div>✳</div><h3>Nothing in this section yet</h3><p>Add a piece to start building your digital wardrobe.</p><button class="primary-button" id="empty-add">Add your first item ↗</button></div>
+    </section>
+    <section class="content-section hidden" id="outfits-view"><div class="section-heading"><div><p class="eyebrow">PUT IT ALL TOGETHER</p><h2>Your outfits<span class="period">.</span></h2></div><button class="outline-button" id="open-outfit">＋ Create outfit</button></div><div class="outfit-grid" id="outfit-grid"></div><div class="empty-state hidden" id="empty-outfits"><div>◈</div><h3>Your next favourite look starts here</h3><p>Select pieces from your wardrobe and save them as an outfit.</p><button class="primary-button" id="empty-outfit">Create an outfit ↗</button></div></section>
+    <section class="content-section hidden" id="collections-view"><div class="section-heading"><div><p class="eyebrow">YOUR EDITS, YOUR WAY</p><h2>Collections<span class="period">.</span></h2></div></div><div class="feature-panel"><span class="feature-icon">▤</span><h3>Collections are coming together.</h3><p>In this first version, your saved outfits live in the Outfits tab. Dedicated collections can be added as a next feature.</p><button class="text-button" data-go="outfits">Browse saved outfits ↗</button></div></section>
+    <section class="content-section hidden" id="discover-view"><div class="section-heading"><div><p class="eyebrow">A FRESH PERSPECTIVE</p><h2>Discover<span class="period">.</span></h2></div></div><div class="feature-panel discover-panel"><span class="feature-icon">✧</span><h3>Make something out of what you own.</h3><p>Try combining a top, a bottom and a finishing piece. Your personal outfit ideas are one click away.</p><button class="primary-button" data-go="outfits">Build an outfit ↗</button></div></section>
+    <footer>VESTRA <span>MADE FOR YOUR EVERYDAY</span><span>© 2026</span></footer>
+  </main>
+  <div class="modal-backdrop hidden" id="item-modal"><form class="modal" id="item-form"><button type="button" class="close-modal" data-close="item-modal">×</button><p class="eyebrow">MAKE IT YOURS</p><h2>Add to wardrobe</h2><label>Item name<input name="name" required maxlength="70" placeholder="e.g. Linen white shirt"></label><div class="form-row"><label>Category<select name="category" required><option value="">Choose category</option><option>Tops</option><option>Bottoms</option><option>Outerwear</option><option>Footwear</option><option>Accessories</option></select></label><label>Colour<input name="color" maxlength="30" placeholder="e.g. Ivory"></label></div><label class="upload-label">Photo <input type="file" name="image" accept="image/png,image/jpeg,image/webp,image/gif"><small>Optional · PNG, JPG or WEBP · up to 5 MB</small></label><button class="primary-button full-button" type="submit">Save to wardrobe ↗</button><p class="form-message" id="item-message"></p></form></div>
+  <div class="modal-backdrop hidden" id="outfit-modal"><form class="modal" id="outfit-form"><button type="button" class="close-modal" data-close="outfit-modal">×</button><p class="eyebrow">THE PERFECT COMBINATION</p><h2>Create an outfit</h2><label>Outfit name<input name="name" required maxlength="70" placeholder="e.g. Sunday in the city"></label><label>Occasion<select name="occasion"><option>Everyday</option><option>College</option><option>Work</option><option>Party</option><option>Travel</option><option>Formal</option></select></label><p class="select-title">Choose your pieces</p><div class="item-picker" id="item-picker"></div><button class="primary-button full-button" type="submit">Save outfit ↗</button><p class="form-message" id="outfit-message"></p></form></div>
+  <div class="toast" id="toast" role="status"></div>
+  <script type="module" src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body></html>
