@@ -217,6 +217,9 @@ def too_large(_error):
     return jsonify({"error": "Image is too large. Maximum size is 5 MB."}), 413
 
 
+# Initialize the database when the app starts, including under a production server.
+init_db()
+
+
 if __name__ == "__main__":
-    init_db()
     app.run(debug=True)
